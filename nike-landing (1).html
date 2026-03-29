@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nike – Airmax Lebagh</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── CSS VARIABLES ─────────────────────────────────────── */
+    :root {
+      --orange:  #FF5A1F;
+      --black:   #111111;
+      --white:   #FFFFFF;
+      --gray:    #F5F4F2;
+      --text:    #1a1a1a;
+      --muted:   #888888;
+      --card-bg: #EBEBEB;
+      --border-r: 18px;
+    }
+
+    /* ── RESET ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--gray);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── WRAPPER ─────────────────────────────────────────────── */
+    .page-wrapper {
+      max-width: 1160px;
+      margin: 24px auto;
+      background: var(--gray);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,.14);
+      position: relative;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding: 24px 48px;
+      background: var(--gray);
+      position: relative;
+      z-index: 10;
+    }
+    .nav-logo svg { width: 44px; height: 44px; fill: var(--black); }
+    .nav-links { display: flex; gap: 36px; margin-left: 8px; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+
+    /* ── HERO SECTION ────────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 520px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* watermark text */
+    .hero::before {
+      content: "JUST DO IT";
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 130px;
+      color: rgba(255,90,31,.08);
+      letter-spacing: .1em;
+      pointer-events: none;
+      white-space: nowrap;
+      z-index: 1;
+    }
+
+    /* ── HERO LEFT ───────────────────────────────────────────── */
+    .hero-left {
+      padding: 52px 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      line-height: .95;
+      letter-spacing: .01em;
+      color: var(--black);
+      margin-bottom: 0;
+    }
+    .hero-title span {
+      display: block;
+      color: var(--orange);
+      font-size: 88px;
+    }
+
+    .hero-desc {
+      margin-top: 20px;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: #555;
+      max-width: 360px;
+    }
+
+    .hero-price-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .hero-price {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -.01em;
+    }
+
+    .btn-cart {
+      padding: 12px 28px;
+      border: 2px solid var(--black);
+      border-radius: 50px;
+      background: transparent;
+      font-family: 'Barlow', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      cursor: pointer;
+      transition: background .25s, color .25s, border-color .25s, transform .15s;
+    }
+    .btn-cart:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ── HERO RIGHT (shoe image) ─────────────────────────────── */
+    .hero-right {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .hero-shoe-img {
+      width: 110%;
+      max-width: 680px;
+      object-fit: contain;
+      transform: rotate(-8deg) translateX(60px) translateY(10px);
+      filter: drop-shadow(0 30px 50px rgba(0,0,0,.22));
+      transition: transform .5s ease;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: rotate(-8deg) translateX(60px) translateY(10px); }
+      50%       { transform: rotate(-8deg) translateX(60px) translateY(-10px); }
+    }
+
+    /* ── THUMBNAIL ROW ───────────────────────────────────────── */
+    .thumb-row {
+      display: flex;
+      gap: 16px;
+      padding: 0 48px 48px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .thumb-card {
+      background: var(--card-bg);
+      border-radius: var(--border-r);
+      padding: 14px 14px 12px;
+      width: 180px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: transform .25s, box-shadow .25s;
+      position: relative;
+    }
+    .thumb-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0,0,0,.13);
+    }
+    .thumb-card img {
+      width: 100%;
+      height: 90px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+    .thumb-info {
+      margin-top: 10px;
+    }
+    .thumb-name {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--black);
+      line-height: 1.3;
+    }
+    .thumb-price {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .thumb-stars {
+      display: flex;
+      gap: 2px;
+      margin-top: 4px;
+    }
+    .thumb-stars svg { width: 10px; height: 10px; fill: var(--orange); }
+    .thumb-add {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      font-size: 18px;
+      line-height: 28px;
+      text-align: center;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .thumb-add:hover { background: var(--orange); transform: scale(1.15); }
+
+    /* ── ANIMATIONS on load ──────────────────────────────────── */
+    .hero-left { animation: fadeUp .7s ease both; }
+    .hero-right { animation: fadeIn .9s .2s ease both; }
+    .thumb-card:nth-child(1) { animation: fadeUp .6s .3s ease both; }
+    .thumb-card:nth-child(2) { animation: fadeUp .6s .4s ease both; }
+    .thumb-card:nth-child(3) { animation: fadeUp .6s .5s ease both; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { justify-content: center; padding: 24px 0; }
+      .hero-shoe-img { transform: rotate(-5deg); animation: none; width: 80%; }
+      .hero-title { font-size: 56px; }
+      .hero-title span { font-size: 68px; }
+      nav { padding: 20px 24px; gap: 24px; }
+      .hero-left { padding: 36px 24px 20px; }
+      .thumb-row { padding: 0 24px 32px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">
+      <!-- Nike Swoosh SVG -->
+      <svg viewBox="0 0 60 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 18.5C8.5 16 59 1.5 59 1.5L10 22C7.5 23 2 22.5 5 18.5Z"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="#">Trang Chủ</a>
+      <a href="#">Nữ</a>
+      <a href="#">Nam</a>
+      <a href="#">Ưu Đãi</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <h1 class="hero-title">
+        Nike Airmax
+        <span>Lebagh</span>
+      </h1>
+      <p class="hero-desc">
+        Tôn vinh thiết kế cổ điển HOPE với hình thức nguyên bản như khi lần đầu được giới thiệu
+        trong buổi trình diễn Thu/Đông 2021 của UNDERCOVER. Phần upper được làm từ da đen cao cấp,
+        trong khi logo Swoosh bằng da trơn tạo điểm nhấn cho kết cấu và phần cổ giày,
+        mang lại vẻ ngoài cổ điển đã tồn tại suốt nhiều thập kỷ.
+      </p>
+      <div class="hero-price-row">
+        <span class="hero-price">4.999.999 Vnđ</span>
+        <button class="btn-cart">Thêm Vào Giỏ</button>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <!-- ảnh 5: close-up hero shoe -->
+      <img class="hero-shoe-img" src="shoe-4.png" alt="Nike Airmax Lebagh" />
+    </div>
+  </section>
+
+  <!-- THUMBNAILS -->
+  <div class="thumb-row">
+
+    <!-- Card 1 – Nike Air One Take -->
+    <div class="thumb-card">
+      <img src="shoe-3.png" alt="Nike Air One Take" />
+      <div class="thumb-info">
+        <div class="thumb-name">Nike Air<br/>One Take</div>
+        <div class="thumb-price">$180</div>
+        <div class="thumb-stars">
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+        </div>
+      </div>
+      <button class="thumb-add">+</button>
+    </div>
+
+    <!-- Card 2 – Nike Air Huahe -->
+    <div class="thumb-card">
+      <img src="shoe-2.png" alt="Nike Air Huahe" />
+      <div class="thumb-info">
+        <div class="thumb-name">Nike Air<br/>Hurahe</div>
+        <div class="thumb-price">$160</div>
+        <div class="thumb-stars">
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+        </div>
+      </div>
+      <button class="thumb-add">+</button>
+    </div>
+
+    <!-- Card 3 – Nike Air Vomero -->
+    <div class="thumb-card">
+      <img src="shoe-1.png" alt="Nike Air Vomero" />
+      <div class="thumb-info">
+        <div class="thumb-name">Nike Air<br/>Vomero</div>
+        <div class="thumb-price">$170</div>
+        <div class="thumb-stars">
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+          <svg viewBox="0 0 12 12"><path d="M6 1l1.5 3 3.3.5-2.4 2.3.6 3.2L6 8.5l-3 1.5.6-3.2L1.2 4.5l3.3-.5z"/></svg>
+        </div>
+      </div>
+      <button class="thumb-add">+</button>
+    </div>
+
+  </div><!-- /thumb-row -->
+
+</div><!-- /page-wrapper -->
+</body>
+</html>
